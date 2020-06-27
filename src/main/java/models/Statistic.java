@@ -40,6 +40,8 @@ public class Statistic implements Serializable {
         this.information = information;
     }
 
+
+
     @Override
     public String toString () {
         return

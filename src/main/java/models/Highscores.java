@@ -8,7 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Highscores implements Serializable {
+public class Highscores  implements Serializable {
+
     @SerializedName("world")
     @Expose
     private String world;
@@ -18,6 +19,20 @@ public class Highscores implements Serializable {
     @SerializedName("data")
     @Expose
     private ArrayList<Data> data = new ArrayList<>();
+
+
+    public ArrayList<Data> getData() {
+        return data;
+    }
+
+    public Data getByIndex(int rank) {
+        return data.get(rank -1);
+    }
+
+    public void setData(ArrayList<Data> data) {
+        this.data = data;
+    }
+
 
     public String getWorld() {
         return world;
@@ -36,11 +51,12 @@ public class Highscores implements Serializable {
     }
 
 
-
-
-
     @Override
-    public String toString () {
-        return data + "\n";
+    public String toString() {
+        return "Highscores{" +
+                "world='" + world + '\'' +
+                ", type='" + type + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

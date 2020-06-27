@@ -1,38 +1,34 @@
 import api.TibiaApi;
-
+import dao.DataDAO;
+import db.dao.SessionProvider;
+import models.*;
 import org.hibernate.SessionFactory;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
     private static SessionFactory factory;
-    public static void main (String[] args) throws IOException, InterruptedException {
 
-    TibiaApi tibiaApi = new TibiaApi();
+    public static void main(String[] args) throws IOException, InterruptedException {
+        TibiaApi aplikacja = new TibiaApi();
+        SessionProvider sessionProvider = SessionProvider.INSTANCE;
+        DataDAO dao = new DataDAO(sessionProvider.getSession());
 
-        String world = "Damora";
-        tibiaApi.getHighcoreStat(world);
+        ArrayList<Data> statistic = aplikacja.getHighcoreList("damora").getHighscores().getData();
 
+        for (int i = 0; i < statistic.size(); i++) {
+            dao.update(statistic.get(i));
+//
+        }
 
-//
-//        SessionProvider sessionProvider = SessionProvider.INSTANCE;
-//        SimpleStatsDAO dao = new SimpleStatsDAO(sessionProvider.getSession());
-//
-//
-//
-//
-//
-//        List<SimpleStats> dane = dao.getAll();
-//        for (SimpleStats stats : dane) {
-//            System.out.println(stats);
-//        }
-//        dao.close();
-//        sessionProvider.closeFactory();
-//
-
-
+        dao.close();
+        sessionProvider.closeFactory();
     }
 }
+
 
 
 

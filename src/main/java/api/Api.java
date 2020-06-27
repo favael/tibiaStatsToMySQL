@@ -1,11 +1,11 @@
 package api;
 
-import models.SimpleStats;
+import models.Statistic;
 
 import java.io.IOException;
 
 public interface Api {
 
-    SimpleStats getHighcoreStat (String world) throws IOException, InterruptedException;
+    Statistic getHighcoreList(String world) throws IOException, InterruptedException;
 
 }

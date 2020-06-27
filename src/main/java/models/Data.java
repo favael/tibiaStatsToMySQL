@@ -1,27 +1,50 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
-public class Data extends Highscores implements Serializable {
+
+@Entity
+@Table(name = "Tibia")
+public class Data  implements Serializable {
+
     @SerializedName("name")
     @Expose
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
     @SerializedName("rank")
     @Expose
+    @Id
+    @Column(name = "rank", unique = true, nullable = false)
     private int rank;
     @SerializedName("voc")
     @Expose
+    @Column(name = "voc")
     private String voc;
     @SerializedName("points")
     @Expose
+    @Column(name = "points")
     private long points;
     @SerializedName("level")
     @Expose
+    @Column(name = "level")
     private int level;
+
+    public Data (String name, int rank, String voc, long points, int level) {
+        this.name = name;
+        this.rank = rank;
+        this.voc = voc;
+        this.points = points;
+        this.level = level;
+    }
+
+
 
     public String getName() {
         return name;
@@ -66,13 +89,7 @@ public class Data extends Highscores implements Serializable {
     public Data () {
     }
 
-    public Data (String name, int rank, String voc, long points, int level) {
-        this.name = name;
-        this.rank = rank;
-        this.voc = voc;
-        this.points = points;
-        this.level = level;
-    }
+
 
     @Override
     public String toString () {

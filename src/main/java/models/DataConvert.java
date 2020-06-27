@@ -1,5 +1,7 @@
 package models;
 
 public interface DataConvert {
-    SimpleStats convertData(String json) throws InterruptedException;
+    Statistic convertStatistic(String json) throws InterruptedException;
+    Data convertData(String json) throws InterruptedException;
+
 }
