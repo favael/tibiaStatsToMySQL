@@ -1,14 +1,36 @@
 package models;
 
+import com.google.gson.annotations.SerializedName;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "Tibia")
+public class SimpleStats  implements Serializable {
 
-public class SimpleStats implements Serializable {
+    @SerializedName("name")
+    @Column(name = "name")
     private String name;
+    @Id
+    @Column(name = "rank")
+    @SerializedName("rank")
     private int rank;
+    @SerializedName("voc")
+    @Column(name = "voc")
     private String voc;
-    private long points;
+    @SerializedName("points")
+    @Column(name = "points")
+    private int points;
+    @SerializedName("level")
+    @Column(name = "level")
     private int level;
+
+    public SimpleStats () {
+    }
 
     public String getName() {
         return name;
@@ -38,7 +60,7 @@ public class SimpleStats implements Serializable {
         return points;
     }
 
-    public void setPoints(long points) {
+    public void setPoints(int points) {
         this.points = points;
     }
 
@@ -49,4 +71,7 @@ public class SimpleStats implements Serializable {
     public void setLevel(int level) {
         this.level = level;
     }
-}
+
+
+    }
+

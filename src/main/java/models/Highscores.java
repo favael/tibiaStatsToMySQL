@@ -36,4 +36,11 @@ public class Highscores implements Serializable {
     }
 
 
+
+
+
+    @Override
+    public String toString () {
+        return data + "\n";
+    }
 }

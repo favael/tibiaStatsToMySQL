@@ -1,6 +1,5 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -56,6 +55,15 @@ public class Information implements Serializable {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString () {
+        return "Information{" +
+                "api_version=" + api_version +
+                ", execution_time=" + execution_time +
+                ", last_updated='" + last_updated + '\'' +
+                ", timestamp='" + timestamp;
     }
 }
 

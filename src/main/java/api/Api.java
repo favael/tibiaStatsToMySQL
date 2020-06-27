@@ -6,6 +6,6 @@ import java.io.IOException;
 
 public interface Api {
 
-    SimpleStats getHighcoreStat (String world) throws IOException;
+    SimpleStats getHighcoreStat (String world) throws IOException, InterruptedException;
 
 }

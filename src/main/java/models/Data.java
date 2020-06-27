@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Data implements Serializable {
+public class Data extends Highscores implements Serializable {
     @SerializedName("name")
     @Expose
     private String name;
@@ -61,5 +61,21 @@ public class Data implements Serializable {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public Data () {
+    }
+
+    public Data (String name, int rank, String voc, long points, int level) {
+        this.name = name;
+        this.rank = rank;
+        this.voc = voc;
+        this.points = points;
+        this.level = level;
+    }
+
+    @Override
+    public String toString () {
+        return "name = " + name + ", rank = " + rank + ", voc = " + voc  + ", points = " + points + ", level = " + level  + "\n" ;
     }
 }
