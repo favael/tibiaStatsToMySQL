@@ -51,7 +51,7 @@ public class DataDAO extends SessionDAO<Data> {
     public List getAll() {
         List<Data> result = null;
         Transaction transaction = session.beginTransaction();
-        result = session.createQuery("FROM Tibia").getResultList();
+        result = session.createQuery("FROM Antica").getResultList();
         transaction.commit();
         return result;
     }

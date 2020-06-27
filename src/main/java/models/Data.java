@@ -3,26 +3,24 @@ package models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 @Entity
-@Table(name = "Tibia")
-public class Data  implements Serializable {
-
+@Table(name ="TibiaAll")
+public class Data  implements Serializable   {
+    @Id
+    @GeneratedValue
+    private Long id;
     @SerializedName("name")
     @Expose
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(name = "name", unique = false, nullable = false)
     private String name;
-    @SerializedName("rank")
-    @Expose
-    @Id
-    @Column(name = "rank", unique = true, nullable = false)
-    private int rank;
+//    @SerializedName("rank")
+//    @Expose
+//    @Column(name = "rank")
+//    private int rank;
     @SerializedName("voc")
     @Expose
     @Column(name = "voc")
@@ -36,9 +34,10 @@ public class Data  implements Serializable {
     @Column(name = "level")
     private int level;
 
+
     public Data (String name, int rank, String voc, long points, int level) {
         this.name = name;
-        this.rank = rank;
+//        this.rank = rank;
         this.voc = voc;
         this.points = points;
         this.level = level;
@@ -54,13 +53,13 @@ public class Data  implements Serializable {
         this.name = name;
     }
 
-    public int getRank() {
-        return rank;
-    }
+//    public int getRank() {
+//        return rank;
+//    }
 
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
+//    public void setRank(int rank) {
+//        this.rank = rank;
+//    }
 
     public String getVoc() {
         return voc;
@@ -93,6 +92,6 @@ public class Data  implements Serializable {
 
     @Override
     public String toString () {
-        return "name = " + name + ", rank = " + rank + ", voc = " + voc  + ", points = " + points + ", level = " + level  + "\n" ;
+        return "name = " + name + ", voc = " + voc  + ", points = " + points + ", level = " + level  + "\n" ;
     }
 }
